@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Phone, Mail, MessageCircle, Clock } from "lucide-react"
-
+import constants from '@/constants.json'
 export function Contact() {
   return (
     <section id="contact" className="py-20">
@@ -32,7 +32,7 @@ export function Contact() {
                       <div className="space-y-1">
                         <Button variant="outline" size="sm" className="justify-start h-auto p-2 bg-transparent">
                           <Phone className="w-4 h-4 mr-2" />
-                          +91 98765 43210
+                          +{constants.phoneNumber}
                         </Button>
                       </div>
                     </div>
@@ -49,10 +49,12 @@ export function Contact() {
                     <div className="space-y-2">
                       <h3 className="font-semibold">WhatsApp</h3>
                       <p className="text-muted-foreground">Quick messaging and booking</p>
+                      <a href={`https://wa.me/${constants.phoneNumber}?text=${encodeURIComponent(constants.whatsappMessage)}`} target="_blank" rel="noopener noreferrer">
                       <Button className="bg-green-600 hover:bg-green-700 h-auto p-2">
                         <MessageCircle className="w-4 h-4 mr-2" />
                         Message on WhatsApp
                       </Button>
+                      </a>
                     </div>
                   </div>
                 </CardContent>
@@ -67,7 +69,7 @@ export function Contact() {
                     <div className="space-y-2">
                       <h3 className="font-semibold">Email</h3>
                       <p className="text-muted-foreground">Send us your requirements</p>
-                      <p className="text-sm font-medium">shrivedic.pandit@gmail.com</p>
+                      <p className="text-sm font-medium">{constants.email}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -110,7 +112,7 @@ export function Contact() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="phone">Phone Number *</Label>
-                  <Input id="phone" placeholder="+91 98765 43210" />
+                  <Input id="phone" placeholder={`+${constants.phoneNumber}`} />
                 </div>
               </div>
 

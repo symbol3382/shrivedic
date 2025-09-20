@@ -1,7 +1,14 @@
 import { Button } from "@/components/ui/button"
 import { Phone, MessageCircle } from "lucide-react"
+import constants from '@/constants.json'
 
 export function Header() {
+
+  const phoneNumber = constants.phoneNumber
+  const message = constants.whatsappMessage
+  const encodedMessage = encodeURIComponent(message)
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`
+
   return (
     <header className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
@@ -26,16 +33,19 @@ export function Header() {
             Contact
           </a>
         </nav>
-
         <div className="flex items-center space-x-2">
-          <Button variant="outline" size="sm" className="hidden sm:flex bg-transparent">
-            <Phone className="w-4 h-4 mr-2" />
-            Call Now
-          </Button>
-          <Button size="sm" className="bg-green-600 hover:bg-green-700">
-            <MessageCircle className="w-4 h-4 mr-2" />
-            WhatsApp
-          </Button>
+          <a href={`tel:+${phoneNumber}`}>
+            <Button variant="outline" size="sm" className="hidden sm:flex bg-transparent">
+              <Phone className="w-4 h-4 mr-2" />
+              Call Now
+            </Button>
+          </a>
+          <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+            <Button size="sm" className="bg-green-600 hover:bg-green-700">
+              <MessageCircle className="w-4 h-4 mr-2" />
+              WhatsApp
+            </Button>
+          </a>
         </div>
       </div>
     </header>

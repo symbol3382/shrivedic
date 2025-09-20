@@ -1,5 +1,5 @@
 import { Phone, Mail, MessageCircle, MapPin } from "lucide-react"
-
+import constants from '@/constants.json'
 export function Footer() {
   return (
     <footer className="bg-muted/50 border-t border-border">
@@ -87,17 +87,18 @@ export function Footer() {
           <div className="space-y-4">
             <h4 className="font-semibold">Contact Information</h4>
             <div className="space-y-3 text-sm">
-              <div className="flex items-center space-x-2 text-muted-foreground">
+              <a className="flex items-center space-x-2 text-muted-foreground" href={`tel:+${constants.phoneNumber}`}>
                 <Phone className="w-4 h-4" />
-                <span>+91 98765 43210</span>
-              </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
+                <span>+{constants.phoneNumber}</span>
+              </a>
+
+              <a className="flex items-center space-x-2 text-muted-foreground" href={`https://wa.me/${constants.phoneNumber}?text=${encodeURIComponent(constants.whatsappMessage)}`} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp Available</span>
-              </div>
+                <span>WhatsApp</span>
+              </a>
               <div className="flex items-center space-x-2 text-muted-foreground">
                 <Mail className="w-4 h-4" />
-                <span>shrivedic.pandit@gmail.com</span>
+                <span>{constants.email}</span>
               </div>
               <div className="flex items-start space-x-2 text-muted-foreground">
                 <MapPin className="w-4 h-4 mt-0.5" />
@@ -109,7 +110,7 @@ export function Footer() {
 
         <div className="border-t border-border mt-8 pt-8 text-center text-sm text-muted-foreground">
           <p>
-            &copy; 2024 Shrivedic Pandit Services. All rights reserved. | Bringing sacred traditions to modern homes.
+            &copy; 2025 Shrivedic Pandit Services. All rights reserved. | Bringing sacred traditions to modern homes.
           </p>
         </div>
       </div>
