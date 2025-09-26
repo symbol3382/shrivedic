@@ -1,5 +1,19 @@
 {
     "email": "shubhamparashar098@gmail.com",
     "phoneNumber": "918090969795",
-    "whatsappMessage": "Hello, I am interested in knowing more details about the Pooja and Path services offered by Shrivedic. Please provide me with the information. Thank you."
+    "whatsappMessage": "Hello, I am interested in knowing more details about the Pooja and Path services offered by Shrivedic. Please provide me with the information. Thank you.",
+    "shloks": [
+        "ॐ सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः । \n सर्वे भद्राणि पश्यन्तु मा कश्चिद्दुःखभाग्भवेत् ॥",
+        "शुभं करोति कल्याणं आरोग्यं धनसंपदा । \n शत्रुबुद्धिविनाशाय दीपज्योतिर्नमोऽस्तुते ॥",
+        "गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः । \n गुरुः साक्षात् परं ब्रह्म तस्मै श्रीगुरवे नमः ॥"
+    ],
+    "trustedFamiliesCount": "500+",
+    "yearsOfExperience": "15+",
+    "ceremoniesCount": "500+",
+    "typesOfPoojaCount": "25+",
+
+    "styles": {
+        "primaryColor": "#FF6F00",
+        "secondaColor": "#FFD700"
+    }
 }
