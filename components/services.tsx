@@ -8,30 +8,135 @@ import constants from '@/constants.json'
 
 const services = constants.services;
 
-// Video Overlay Component
-function VideoOverlay({ videoSrc, isOpen, onClose }: { videoSrc: string; isOpen: boolean; onClose: () => void }) {
+// Media Gallery Component
+function MediaGallery({ 
+  service, 
+  isOpen, 
+  onClose, 
+  currentIndex, 
+  onIndexChange 
+}: { 
+  service: any; 
+  isOpen: boolean; 
+  onClose: () => void; 
+  currentIndex: number;
+  onIndexChange: (index: number) => void;
+}) {
   if (!isOpen) return null
 
+  const currentMedia = service.media[currentIndex]
+  const currentMediaPath = `/services/${service.id}/${currentMedia}`
+  const isCurrentVideo = currentMedia.toLowerCase().endsWith('.mp4')
+
+  const navigateMedia = (direction: 'prev' | 'next') => {
+    let newIndex = direction === 'next' ? currentIndex + 1 : currentIndex - 1
+    if (newIndex >= service.media.length) newIndex = 0
+    if (newIndex < 0) newIndex = service.media.length - 1
+    onIndexChange(newIndex)
+  }
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm">
-      <div className="relative w-[70vw] h-[70vh] max-w-4xl max-h-[70vh]">
+    <div className="fixed inset-0 z-50 flex flex-col bg-black/95 backdrop-blur-sm">
+      {/* Header with close button */}
+      <div className="flex justify-between items-center p-4">
+        <h3 className="text-white text-lg font-semibold">{service.title}</h3>
         <Button
           onClick={onClose}
-          className="absolute -top-12 right-0 bg-white/20 hover:bg-white/30 text-white border-white/30 z-10"
+          className="bg-white/20 hover:bg-white/30 text-white border-white/30"
           size="sm"
         >
           <X className="w-4 h-4 mr-2" />
           Close
         </Button>
-        <video
-          src={videoSrc}
-          controls
-          autoPlay
-          className="w-full h-full object-contain rounded-lg shadow-2xl"
-        >
-          Your browser does not support the video tag.
-        </video>
       </div>
+
+      {/* Main media display area */}
+      <div className="flex-1 flex items-center justify-center p-4 relative">
+        {/* Navigation buttons */}
+        {service.media.length > 1 && (
+          <>
+            <Button
+              onClick={() => navigateMedia('prev')}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white border-white/30 z-10"
+              size="sm"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </Button>
+            <Button
+              onClick={() => navigateMedia('next')}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white border-white/30 z-10"
+              size="sm"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </Button>
+          </>
+        )}
+
+        {/* Media display */}
+        <div className="w-full h-full max-w-6xl max-h-[70vh] flex items-center justify-center">
+          {isCurrentVideo ? (
+            <video
+              src={currentMediaPath}
+              controls
+              autoPlay
+              className="w-full h-full object-contain rounded-lg shadow-2xl"
+            >
+              Your browser does not support the video tag.
+            </video>
+          ) : (
+            <img
+              src={currentMediaPath}
+              alt={`${service.title} - Image ${currentIndex + 1}`}
+              className="w-full h-full object-contain rounded-lg shadow-2xl"
+            />
+          )}
+        </div>
+      </div>
+
+      {/* Thumbnail strip */}
+      {service.media.length > 1 && (
+        <div className="p-4 border-t border-white/20">
+          <div className="flex justify-center space-x-2 overflow-x-auto max-w-4xl mx-auto">
+            {service.media.map((media: string, index: number) => {
+              const mediaPath = `/services/${service.id}/${media}`
+              const isVideo = media.toLowerCase().endsWith('.mp4')
+              const isActive = index === currentIndex
+
+              return (
+                <div
+                  key={index}
+                  onClick={() => onIndexChange(index)}
+                  className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden cursor-pointer border-2 transition-all ${
+                    isActive ? 'border-white shadow-lg' : 'border-white/30 hover:border-white/60'
+                  }`}
+                >
+                  {isVideo ? (
+                    <div className="w-full h-full bg-gray-800 flex items-center justify-center">
+                      <video
+                        src={mediaPath}
+                        className="w-full h-full object-cover"
+                        muted
+                      />
+                      <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                        <Play className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                  ) : (
+                    <img
+                      src={mediaPath}
+                      alt={`Thumbnail ${index + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  )}
+                  {isActive && (
+                    <div className="absolute inset-0 bg-white/20 border-2 border-white rounded-lg" />
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
@@ -39,7 +144,11 @@ function VideoOverlay({ videoSrc, isOpen, onClose }: { videoSrc: string; isOpen:
 export function Services() {
   const backgroundRef = useRef<HTMLDivElement>(null)
   const [currentMediaIndex, setCurrentMediaIndex] = useState<{ [key: string]: number }>({})
-  const [videoOverlay, setVideoOverlay] = useState<{ isOpen: boolean; src: string }>({ isOpen: false, src: '' })
+  const [galleryOverlay, setGalleryOverlay] = useState<{ isOpen: boolean; service: any; currentIndex: number }>({ 
+    isOpen: false, 
+    service: null, 
+    currentIndex: 0 
+  })
 
   // Helper functions
   const getCurrentMedia = (service: any) => {
@@ -67,15 +176,17 @@ export function Services() {
     })
   }
 
-  const handleMediaClick = (service: any, mediaName: string) => {
-    if (isVideo(mediaName)) {
-      const videoSrc = getMediaPath(service, mediaName)
-      setVideoOverlay({ isOpen: true, src: videoSrc })
-    }
+  const handleMediaClick = (service: any) => {
+    const currentIndex = currentMediaIndex[service.id] || 0
+    setGalleryOverlay({ isOpen: true, service, currentIndex })
   }
 
-  const closeVideoOverlay = () => {
-    setVideoOverlay({ isOpen: false, src: '' })
+  const closeGalleryOverlay = () => {
+    setGalleryOverlay({ isOpen: false, service: null, currentIndex: 0 })
+  }
+
+  const handleGalleryIndexChange = (newIndex: number) => {
+    setGalleryOverlay(prev => ({ ...prev, currentIndex: newIndex }))
   }
 
   useEffect(() => {
@@ -134,7 +245,7 @@ export function Services() {
                   {isVideo(currentMedia) ? (
                     <div 
                       className="w-full h-48 bg-gray-100 rounded-t-lg flex items-center justify-center cursor-pointer relative overflow-hidden"
-                      onClick={() => handleMediaClick(service, currentMedia)}
+                      onClick={() => handleMediaClick(service)}
                     >
                       <video
                         src={currentMediaPath}
@@ -153,7 +264,7 @@ export function Services() {
                       src={currentMediaPath}
                       alt={service.title}
                       className="w-full h-48 object-cover rounded-t-lg cursor-pointer"
-                      onClick={() => handleMediaClick(service, currentMedia)}
+                      onClick={() => handleMediaClick(service)}
                     />
                   )}
                   
@@ -245,11 +356,13 @@ export function Services() {
         </div>
       </div>
       
-      {/* Video Overlay */}
-      <VideoOverlay 
-        videoSrc={videoOverlay.src} 
-        isOpen={videoOverlay.isOpen} 
-        onClose={closeVideoOverlay} 
+      {/* Media Gallery Overlay */}
+      <MediaGallery 
+        service={galleryOverlay.service}
+        isOpen={galleryOverlay.isOpen} 
+        onClose={closeGalleryOverlay}
+        currentIndex={galleryOverlay.currentIndex}
+        onIndexChange={handleGalleryIndexChange}
       />
     </section>
   )
