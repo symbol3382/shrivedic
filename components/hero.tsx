@@ -45,7 +45,7 @@ export function Hero() {
         ref={backgroundRef}
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `url(/banner/banner-${Math.floor(Math.random() * 15) + 1}.jpg)`,
+          backgroundImage: `url(/banner/banner-1.jpg)`,
           transform: 'translateZ(0)',
           willChange: 'transform',
           height: '120%'

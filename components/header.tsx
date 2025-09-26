@@ -13,8 +13,12 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-border shadow-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-sm">
-            <span className="text-white font-bold text-sm">श्री</span>
+          <div className="w-8 h-8 rounded-full overflow-hidden shadow-sm">
+            <img 
+              src="/app-icon.png" 
+              alt="Shrivedic App Icon" 
+              className="w-full h-full object-cover"
+            />
           </div>
           <h1 className="text-2xl font-bold text-foreground">Shrivedic</h1>
         </div>
@@ -35,15 +39,15 @@ export function Header() {
         </nav>
         <div className="flex items-center space-x-2">
           <a href={`tel:+${phoneNumber}`}>
-            <Button variant="outline" size="sm" className="hidden sm:flex">
-              <Phone className="w-4 h-4 mr-2" />
-              Call Now
+            <Button variant="outline" size="sm" className="flex">
+              <Phone className="w-4 h-4 sm:mr-2" />
+              <span className="hidden sm:inline">Call Now</span>
             </Button>
           </a>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-            <Button size="sm" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-sm">
-              <MessageCircle className="w-4 h-4 mr-2" />
-              WhatsApp
+            <Button size="sm" className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-sm flex">
+              <MessageCircle className="w-4 h-4 sm:mr-2" />
+              <span className="hidden sm:inline">WhatsApp</span>
             </Button>
           </a>
         </div>
