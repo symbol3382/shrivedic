@@ -11,9 +11,95 @@
     "yearsOfExperience": "15+",
     "ceremoniesCount": "500+",
     "typesOfPoojaCount": "25+",
-
     "styles": {
         "primaryColor": "#FF6F00",
         "secondaColor": "#FFD700"
-    }
+    },
+    "services": [
+        {
+            "id": "19f38c15-20ec-42ba-a043-67dbc1f6af0d",
+            "title": "तीर्थ पूजन",
+            "description": "तीर्थ गुरु पुष्कर राज पुजन एवं हमारे धार्मिक तीर्थों प्रयाग गंगा आदि तीर्थ का पूजन",
+            "price": "₹2,500 onwards",
+            "duration": "2-3 hours",
+            "media": [
+                "img-1.png",
+                "img-2.png",
+                "vid-1.mp4"
+            ],
+            "popular": true
+        },
+        {
+            "id": "b63a43f0-b1e5-4f90-be00-14c14020fedd",
+            "title": "पितृ पूजन, श्राद्ध , तर्पण, और त्रिपिंडी श्राद्ध",
+            "description": "पितृ पूजन एक व्यापक शब्द है जिसमें पूर्वजों को सम्मान और भोजन अर्पित करके उनकी आत्माओं को प्रसन्न किया जाता है। इसमें पिंड दान और तर्पण त्रिपिंडी श्राद्ध शामिल हैं, जो पूर्वजों के लिए किए जाने वाले महत्वपूर्ण अनुष्ठान हैं।",
+            "price": "₹5,000 onwards",
+            "duration": "3-4 hours",
+            "media": [
+                "img-1.png",
+                "img-2.png",
+                "img-3.png",
+                "img-4.png",
+                "img-5.png",
+                "img-6.png",
+                "img-7.png"
+            ]
+        },
+        {
+            "id": "532dea9a-30fa-47db-aa61-06d1651d49fe",
+            "title": "काल सर्प दोष पुजा (उज्जैन)",
+            "description": "कालसर्प पूजा के लाभों में जीवन की रुकावटें दूर होना, परिवार में सुख-शांति, व्यापार में उन्नति और आर्थिक स्थिति में सुधार शामिल हैं। पूजा से शारीरिक, मानसिक और आध्यात्मिक प्रगति होती है, जो तनाव और अस्थिरता से मुक्ति दिलाती है। दोषों को पूजा द्वारा अच्छे परिणामों में बदला जा सकता है, जैसे कि विवाहिक जीवन में प्रेम और सामंजस्य बढ़ना और स्वास्थ्य संबंधी परेशानियाँ दूर होना",
+            "price": "₹3,000 onwards",
+            "duration": "3-4 hours",
+            "media": [
+                "img-1.png",
+                "img-2.png",
+                "img-3.png"
+            ]
+        },
+        {
+            "id": "c290383e-593a-4af8-a523-ae204ac69c7f",
+            "title": "शतचंडी अनुष्ठान",
+            "description": "",
+            "price": "₹4,000 onwards",
+            "duration": "2-3 hours",
+            "media": [
+                "img-1.png"
+            ]
+        },
+        {
+            "id": "5a8d226d-051d-4504-bd4d-2b9cb6740a82",
+            "title": "वास्तु शान्ति पुजन",
+            "description": "",
+            "price": "₹2,000 onwards",
+            "duration": "2 hours",
+            "media": [
+                "img-1.png",
+                "img-2.png"
+            ]
+        },
+        {
+            "id": "3089f83b-2f5d-495f-aecf-01d540e7ef54",
+            "title": "शतरुद्री प्रयोग पूजन अभिषेक",
+            "description": "",
+            "price": "₹1,500 onwards",
+            "duration": "1-2 hours",
+            "media": [
+                "img-1.jpg",
+                "img-2.png",
+                "vid-1.mp4"
+            ]
+        },
+        {
+            "id": "48c94f3f-6522-49b5-aa74-e36f8b41527b",
+            "title": "गृह प्रवेश पुजन",
+            "description": "",
+            "price": "₹3,500 onwards",
+            "duration": "2-3 hours",
+            "media": [
+                "img-1.png",
+                "vid-1.mp4"
+            ]
+        }
+    ]
 }
