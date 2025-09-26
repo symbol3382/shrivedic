@@ -317,7 +317,7 @@ export function Services() {
                   )}
                 </div>
 
-              <CardHeader className="pb-3 flex-shrink-0 px-6 pt-6">
+              <CardHeader className="pb-3 flex-shrink-0 px-6 pt-0">
                 <CardTitle className="text-lg group-hover:text-primary transition-colors">{service.title}</CardTitle>
                 <CardDescription className="text-sm">{service.description}</CardDescription>
               </CardHeader>
