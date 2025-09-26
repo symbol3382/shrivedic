@@ -30,9 +30,6 @@ export function Header() {
           <a href="#about" className="text-foreground hover:text-primary transition-colors">
             About
           </a>
-          <a href="#gallery" className="text-foreground hover:text-primary transition-colors">
-            Gallery
-          </a>
           <a href="#contact" className="text-foreground hover:text-primary transition-colors">
             Contact
           </a>

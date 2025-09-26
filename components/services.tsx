@@ -329,12 +329,18 @@ export function Services() {
                   </div>
 
                   <div className="flex justify-center">
-                    <Button
-                      size="sm"
-                      className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-sm"
+                    <a 
+                      href={`https://wa.me/${constants.phoneNumber}?text=${service.whatsappMessage}`} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
                     >
-                      Book Now
-                    </Button>
+                      <Button
+                        size="sm"
+                        className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-sm"
+                      >
+                        Book Now
+                      </Button>
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -345,13 +351,19 @@ export function Services() {
         <div className="text-center mt-12">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 max-w-md mx-auto">
             <p className="text-muted-foreground mb-4">Need a custom ceremony or have special requirements?</p>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-white/50 backdrop-blur-sm"
+            <a 
+              href={`https://wa.me/${constants.phoneNumber}?text=${encodeURIComponent(constants.whatsappMessageCustomPooja)}`} 
+              target="_blank" 
+              rel="noopener noreferrer"
             >
-              Request Custom Pooja
-            </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-white/50 backdrop-blur-sm"
+              >
+                Request Custom Pooja
+              </Button>
+            </a>
           </div>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Award, BookOpen, Users, Clock } from "lucide-react"
+import constants from '@/constants.json'
 
 export function About() {
   return (
@@ -10,7 +11,7 @@ export function About() {
           <div className="space-y-8">
             <div className="space-y-4">
               <Badge variant="outline" className="border-primary text-primary">
-                About Pandit Ji
+                About Pandit Shubham
               </Badge>
               <h2 className="text-3xl lg:text-4xl font-bold text-balance">
                 Preserving Sacred Traditions with <span className="text-primary">Authentic Knowledge</span>
@@ -27,7 +28,7 @@ export function About() {
               <Card className="border-border/50">
                 <CardContent className="p-6 text-center">
                   <Award className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-primary">15+</div>
+                  <div className="text-2xl font-bold text-primary">{constants.yearsOfExperience}</div>
                   <div className="text-sm text-muted-foreground">Years Experience</div>
                 </CardContent>
               </Card>
@@ -35,7 +36,7 @@ export function About() {
               <Card className="border-border/50">
                 <CardContent className="p-6 text-center">
                   <BookOpen className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-primary">Sanskrit</div>
+                  <div className="text-2xl font-bold text-primary">{constants.vedicScholar}</div>
                   <div className="text-sm text-muted-foreground">Vedic Scholar</div>
                 </CardContent>
               </Card>
@@ -43,7 +44,7 @@ export function About() {
               <Card className="border-border/50">
                 <CardContent className="p-6 text-center">
                   <Users className="w-8 h-8 text-primary mx-auto mb-3" />
-                  <div className="text-2xl font-bold text-primary">500+</div>
+                  <div className="text-2xl font-bold text-primary">{constants.trustedFamiliesCount}</div>
                   <div className="text-sm text-muted-foreground">Happy Families</div>
                 </CardContent>
               </Card>
@@ -83,7 +84,7 @@ export function About() {
           <div className="relative">
             <div className="aspect-[4/5] rounded-2xl overflow-hidden bg-muted">
               <img
-                src="/placeholder-k6eqq.png"
+                src="/avatar.png"
                 alt="Pandit Ji performing ceremonies"
                 className="w-full h-full object-cover"
               />

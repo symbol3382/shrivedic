@@ -69,7 +69,7 @@ export function Hero() {
                 <span>Trusted by {constants.trustedFamiliesCount} families</span>
               </div>
 
-              <div className="text-xl text-white/90 text-pretty max-w-3xl mx-auto min-h-[120px] flex items-center justify-center">
+              <div className="text-xl lg:text-4xl text-white/90 text-pretty max-w-3xl mx-auto min-h-[120px] flex items-center justify-center">
                 <p 
                   className={`transition-all duration-600 ease-in-out text-center leading-relaxed ${
                     isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
